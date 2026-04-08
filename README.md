@@ -1,14 +1,14 @@
 # CNNexperiements
 
-A from-scratch implementation of convolutional neural networks in Python — no PyTorch, no NumPy. Built to understand what actually happens inside a CNN before letting a framework do it for you.
+A from scratch implementation of CNN's in Python without PyTorch and NumPy for main CNN functionality.
 
 ---
 
 ## What this is
 
-Most CNN tutorials have you calling `nn.Conv2d` and calling it a day. This repo builds the pieces manually: convolution, ReLU, max pooling, fully connected layers, and softmax — then uses that foundation to replicate VGGNet for image classification on CIFAR-10, accelerated with CuPy.
+This repo builds the CNN manually: convolution, ReLU, max pooling, fully connected layers, softmax, etc. then uses that foundation to replicate VGGNet for image classification on CIFAR-10, accelerated with CuPy.
 
-The goal was never to beat a framework on performance. It was to make sure I actually understood the mechanics before abstracting them away.
+The goal was to understand the mechanics before abstracting them away.
 
 ---
 
@@ -22,7 +22,7 @@ input (RGB, depth=3)
   -> fc(120) -> fc(84) -> fc(10)        # classifier head
   -> softmax -> logits
 ```
-All layers — convolution, backprop, pooling — implemented without NumPy or PyTorch.
+All layers convolution, backprop, pooling, etc. implemented without NumPy or PyTorch.
 
 ### VGGNet Replication (CuPy)
 ```
@@ -32,7 +32,8 @@ All layers — convolution, backprop, pooling — implemented without NumPy or P
 # (conv -> bn -> relu) x2 -> mp -> dropout ->
 # gap -> fc -> relu -> dropout -> fc -> logits
 ```
-Built on top of the same custom layer foundation, with CuPy for GPU acceleration. Trained on CIFAR-10.
+Built on top of the same custom layer foundation with some improvements for speed, with CuPy for GPU acceleration, although I named the file numpytest for some reason. 
+Trained on CIFAR-10.
 
 ---
 
@@ -44,11 +45,3 @@ Built on top of the same custom layer foundation, with CuPy for GPU acceleration
 - **Fully connected**: standard linear layers with manual weight init
 - **Softmax**: applied at output for class probabilities
 - **GPU support**: CuPy used in the VGGNet replication for accelerated computation
-
----
-
-## Stack
-
-- Python
-- CuPy (VGGNet replication)
-- No PyTorch / TensorFlow / NumPy for core layer logic
