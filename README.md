@@ -52,9 +52,3 @@ Built on top of the same custom layer foundation, with CuPy for GPU acceleration
 - Python
 - CuPy (VGGNet replication)
 - No PyTorch / TensorFlow / NumPy for core layer logic
-
----
-
-## Why
-
-Understanding a convolution by writing one is different from understanding it by reading about it. Same goes for backprop, pooling, and everything else a framework hides. This repo is that exercise.
