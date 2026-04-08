@@ -31,7 +31,7 @@ All layers convolution, backprop, pooling, etc. implemented without NumPy or PyT
 (conv -> bn -> relu) x2 -> mp -> dropout ->
 gap -> fc -> relu -> dropout -> fc -> logits
 ```
-Built on top of the same custom layer foundation with some improvements for speed, with CuPy for GPU acceleration, although I named the file numpytest for some reason. 
+Built on top of the same custom layer foundation with some improvements for speed, with CuPy for GPU acceleration, although I named the file using_numpy despite using cupy. 
 Trained on CIFAR-10.
 
 ---
