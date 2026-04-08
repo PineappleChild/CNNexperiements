@@ -16,21 +16,20 @@ The goal was to understand the mechanics before abstracting them away.
 
 ### Custom CNN (from scratch)
 ```
-input (RGB, depth=3)
-  -> (conv -> relu -> maxpool) x2       # feature extraction blocks
-  -> flatten
-  -> fc(120) -> fc(84) -> fc(10)        # classifier head
-  -> softmax -> logits
+-> (conv -> relu -> maxpool) x2       
+-> flatten
+-> fc -> fc -> fc        
+-> softmax -> logits
 ```
 All layers convolution, backprop, pooling, etc. implemented without NumPy or PyTorch.
 
 ### VGGNet Replication (CuPy)
 ```
-# (conv -> bn -> relu) x2 -> mp -> dropout ->
-# (conv -> bn -> relu) x2 -> mp -> dropout ->
-# (conv -> bn -> relu) x3 -> mp -> dropout ->
-# (conv -> bn -> relu) x2 -> mp -> dropout ->
-# gap -> fc -> relu -> dropout -> fc -> logits
+(conv -> bn -> relu) x2 -> mp -> dropout ->
+(conv -> bn -> relu) x2 -> mp -> dropout ->
+(conv -> bn -> relu) x3 -> mp -> dropout ->
+(conv -> bn -> relu) x2 -> mp -> dropout ->
+gap -> fc -> relu -> dropout -> fc -> logits
 ```
 Built on top of the same custom layer foundation with some improvements for speed, with CuPy for GPU acceleration, although I named the file numpytest for some reason. 
 Trained on CIFAR-10.
